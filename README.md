@@ -13,6 +13,10 @@ To interact with the API using Postman, you can download & import the provided c
 You can also access the Postman collection directly using the following URL:
 - [Postman URL](https://www.postman.com/shivam-singh-mzp/workspace/shivam-singh/collection/25164413-0b76129b-518c-445b-8b04-a9cb6990e242?action=share&creator=25164413)
 
+## Microservices Architecture
+
+The platform is structured into three microservices: User, Discussion, and Interaction. These services communicate asynchronously via RabbitMQ. Nginx serves as a reverse proxy, routing requests to the appropriate microservice.
+
 ## Logging
 
 - Logging is implemented using winston to log API errors.
@@ -35,6 +39,8 @@ You can also access the Postman collection directly using the following URL:
 - **Docker**: Used for containerizing the application for ease of deployment and scaling.
 - **MongoDB**: A NoSQL database for storing location data.
 - **Mongoose**: An ODM for MongoDB and Node.js.
+- **RabbitMQ**: A message broker for handling asynchronous communication between microservices.
+- **Nginx**: A reverse proxy server for managing API requests and load balancing.
 
 ## Repository
 
