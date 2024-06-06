@@ -1,0 +1,65 @@
+version: "3.8"
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  discussion:
+    build:
+      context: ./discussion
+    container_name: discussion
+    ports:
+      - "4001:4001"
+    restart: always
+    depends_on:
+      - mongo
+    volumes:
+      - ./discussion:/app/discussion
+    env_file:
+      - ./discussion/.env
+
+  interaction:
+    build:
+      context: ./interaction
+    container_name: interaction
+    ports:
+      - "5000:5000"
+    restart: always
+    depends_on:
+      - mongo
+    volumes:
+      - ./interaction:/app/interaction
+    env_file:
+      - ./interaction/.env
+
+  user:
+    build:
+      context: ./user
+    container_name: user
+    ports:
+      - "3001:3001"
+    restart: always
+    depends_on:
+      - mongo
+    volumes:
+      - ./user:/app/user
+    env_file:
+      - ./user/.env
+
+  nginx-proxy:
+    build:
+      context: ./proxy
+    container_name: nginx-proxy
+    depends_on:
+      - discussion
+      - interaction
+      - user
+    ports:
+      - "80:80"
+
+volumes:
+  mongo-data:
