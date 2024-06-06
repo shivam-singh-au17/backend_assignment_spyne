@@ -1,0 +1,2127 @@
+{
+	"info": {
+		"_postman_id": "0b76129b-518c-445b-8b04-a9cb6990e242",
+		"name": "backend_assignment_spyne",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25164413"
+	},
+	"item": [
+		{
+			"name": "USER",
+			"item": [
+				{
+					"name": "users/signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Shivam Singh\",\r\n    \"phone\": \"6306518466\",\r\n    \"email\": \"shivam@gmail.com\",\r\n    \"password\": \"Shivam@12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{USER_BASE_URL}}/signup",
+							"host": [
+								"{{USER_BASE_URL}}"
+							],
+							"path": [
+								"signup"
+							]
+						},
+						"description": "### POST /signup\n\nThis endpoint is used to sign up a new user.\n\n#### Request Body\n\n- `name` (text, required): The name of the user.\n    \n- `phone` (text, required): The phone number of the user.\n    \n- `email` (text, required): The email address of the user.\n    \n- `password` (text, required): The password for the user account.\n    \n\n#### Response\n\nThe response is in JSON format and has the following schema:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"status\": {\n            \"type\": \"boolean\"\n        },\n        \"data\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"user\": {\n                    \"type\": \"object\",\n                    \"properties\": {\n                        \"name\": {\n                            \"type\": \"string\"\n                        },\n                        \"phone\": {\n                            \"type\": \"string\"\n                        },\n                        \"email\": {\n                            \"type\": \"string\"\n                        },\n                        \"followers\": {\n                            \"type\": \"array\"\n                        },\n                        \"following\": {\n                            \"type\": \"array\"\n                        },\n                        \"_id\": {\n                            \"type\": \"string\"\n                        },\n                        \"createdAt\": {\n                            \"type\": \"string\"\n                        },\n                        \"updatedAt\": {\n                            \"type\": \"string\"\n                        }\n                    }\n                },\n                \"token\": {\n                    \"type\": \"string\"\n                }\n            }\n        }\n    }\n}\n\n ```\n\nThe response includes a boolean `status` indicating the success of the request, and a `data` object containing user information including `name`, `phone`, `email`, `followers`, `following`, `_id`, `createdAt`, `updatedAt`, and a `token` for authentication."
+					},
+					"response": [
+						{
+							"name": "signup",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Shivam Singh\",\r\n    \"phone\": \"6306518466\",\r\n    \"email\": \"shivam@gmail.com\",\r\n    \"password\": \"Shivam@12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{USER_BASE_URL}}/signup",
+									"host": [
+										"{{USER_BASE_URL}}"
+									],
+									"path": [
+										"signup"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "519"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"207-HryT8F2aVrUQ5tBbYPLGGlHWUG8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 14:33:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": {\n        \"user\": {\n            \"name\": \"Mohan Singh\",\n            \"phone\": \"+916306518467\",\n            \"email\": \"mohan@gmail.com\",\n            \"followers\": [],\n            \"following\": [],\n            \"_id\": \"6661c8ca21750d4a4ad6b22e\",\n            \"createdAt\": \"2024-06-06T14:33:46.902Z\",\n            \"updatedAt\": \"2024-06-06T14:33:46.902Z\"\n        },\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjYxYzhjYTIxNzUwZDRhNGFkNmIyMmUiLCJuYW1lIjoiTW9oYW4gU2luZ2giLCJwaG9uZSI6IjYzMDY1MTg0NjciLCJlbWFpbCI6Im1vaGFuQGdtYWlsLmNvbSIsImlhdCI6MTcxNzY4NDQyNywiZXhwIjoxNzE3Njg4MDI3fQ.ljESjKkuDGe84tuou0CIEXtrPC1FMY-HRDLS-Cojc24\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "users/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"shivam@gmail.com\",\r\n    \"password\": \"Shivam@12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{USER_BASE_URL}}/login",
+							"host": [
+								"{{USER_BASE_URL}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "### Login Endpoint\n\nThis API endpoint is used to authenticate and login a user.\n\n#### Request Body\n\n- **email** (string, required): The email of the user.\n    \n- **password** (string, required): The password of the user.\n    \n\n#### Response\n\nThe response will be a JSON object with the following properties:\n\n- **status** (boolean): Indicates the status of the login request.\n    \n- **data** (object): Contains user information and authentication token.\n    - **user** (object): User details including id, name, phone, email, followers, following, createdAt, and updatedAt.\n        - **_id** (string): The unique identifier of the user.\n            \n        - **name** (string): The name of the user.\n            \n        - **phone** (string): The phone number of the user.\n            \n        - **email** (string): The email of the user.\n            \n        - **followers** (array): List of followers of the user.\n            \n        - **following** (array): List of users being followed by the user.\n            \n        - **createdAt** (string): Date and time of user creation.\n            \n        - **updatedAt** (string): Date and time of user details update.\n            \n    - **token** (string): Authentication token for the logged-in user.\n        \n\n#### JSON Schema\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"status\": {\n      \"type\": \"boolean\"\n    },\n    \"data\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"user\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"_id\": {\n              \"type\": \"string\"\n            },\n            \"name\": {\n              \"type\": \"string\"\n            },\n            \"phone\": {\n              \"type\": \"string\"\n            },\n            \"email\": {\n              \"type\": \"string\"\n            },\n            \"followers\": {\n              \"type\": \"array\"\n            },\n            \"following\": {\n              \"type\": \"array\"\n            },\n            \"createdAt\": {\n              \"type\": \"string\"\n            },\n            \"updatedAt\": {\n              \"type\": \"string\"\n            }\n          }\n        },\n        \"token\": {\n          \"type\": \"string\"\n        }\n      }\n    }\n  }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"shivam@gmail.com\",\r\n    \"password\": \"Shivam@12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{USER_BASE_URL}}/login",
+									"host": [
+										"{{USER_BASE_URL}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.0"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 17:45:57 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "549"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"225-yAPCj7AHpJ8/Ar8vLcUiW8FwM9E\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": {\n        \"user\": {\n            \"_id\": \"6661c82a21750d4a4ad6b227\",\n            \"name\": \"Shivam Singh\",\n            \"phone\": \"+916306518466\",\n            \"email\": \"shivam@gmail.com\",\n            \"followers\": [],\n            \"following\": [\n                \"6661c8ca21750d4a4ad6b22e\"\n            ],\n            \"createdAt\": \"2024-06-06T14:31:06.920Z\",\n            \"updatedAt\": \"2024-06-06T14:53:11.074Z\"\n        },\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjYxYzgyYTIxNzUwZDRhNGFkNmIyMjciLCJuYW1lIjoiU2hpdmFtIFNpbmdoIiwicGhvbmUiOiI2MzA2NTE4NDY2IiwiZW1haWwiOiJzaGl2YW1AZ21haWwuY29tIiwiaWF0IjoxNzE3Njk1OTU3LCJleHAiOjE3MTc2OTk1NTd9.yZkESeHo3OwwS-8_A7Eaq-IePW-cMFMID-63T3DjdTU\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "users/update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Shivam Singh\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{USER_BASE_URL}}/",
+							"host": [
+								"{{USER_BASE_URL}}"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "### Update User Details\n\nThis endpoint is used to update user details.\n\n#### Request Body\n\n- **name** (string, required): The name of the user.\n    \n\n#### Response\n\nThe response is in JSON format and follows the schema below:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"status\": {\n            \"type\": \"boolean\"\n        },\n        \"data\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"_id\": {\n                    \"type\": \"string\"\n                },\n                \"name\": {\n                    \"type\": \"string\"\n                },\n                \"phone\": {\n                    \"type\": \"string\"\n                },\n                \"email\": {\n                    \"type\": \"string\"\n                },\n                \"followers\": {\n                    \"type\": \"array\"\n                },\n                \"following\": {\n                    \"type\": \"array\"\n                },\n                \"createdAt\": {\n                    \"type\": \"string\"\n                },\n                \"updatedAt\": {\n                    \"type\": \"string\"\n                }\n            }\n        }\n    }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Shivam Singh\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{USER_BASE_URL}}/",
+									"host": [
+										"{{USER_BASE_URL}}"
+									],
+									"path": [
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "238"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ee-ktDuE+cvxgOXPr4MRxbpTmHUJZQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 14:29:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": {\n        \"_id\": \"6661c71621750d4a4ad6b217\",\n        \"name\": \"Shivam Singh\",\n        \"phone\": \"+916306518466\",\n        \"email\": \"shivam@gmail.com\",\n        \"followers\": [],\n        \"following\": [],\n        \"createdAt\": \"2024-06-06T14:26:30.472Z\",\n        \"updatedAt\": \"2024-06-06T14:29:31.925Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "users/follow",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Shivam Singh\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{USER_BASE_URL}}/follow/:userId",
+							"host": [
+								"{{USER_BASE_URL}}"
+							],
+							"path": [
+								"follow",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "6661c8ca21750d4a4ad6b22e"
+								}
+							]
+						},
+						"description": "### PUT /follow/:userId\n\nThis endpoint is used to update the follow status for a specific user.\n\n#### Request\n\n- Method: PUT\n    \n- Base URL: {{USER_BASE_URL}}\n    \n- Path: /follow/:userId\n    \n- Headers:\n    - Content-Type: application/json\n        \n- Body:\n    - name (string, optional): The name of the user to be followed.\n        \n\n#### Response\n\n- Status: 200\n    \n- Content-Type: application/json\n    \n- Body:\n    \n    ``` json\n      {\n          \"status\": true,\n          \"data\": {\n              \"message\": \"\"\n          }\n      }\n    \n     ```\n    \n\n#### JSON Schema\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"status\": {\n            \"type\": \"boolean\"\n        },\n        \"data\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"message\": {\n                    \"type\": \"string\"\n                }\n            }\n        }\n    }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "users/follow",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Shivam Singh\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{USER_BASE_URL}}/follow/:userId",
+									"host": [
+										"{{USER_BASE_URL}}"
+									],
+									"path": [
+										"follow",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "6661c8ca21750d4a4ad6b22e"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "67"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"43-jgo3YDIYLiaG4FeOwXHbFZEdmMI\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 14:53:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": {\n        \"message\": \"Successfully followed the user\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "users/unfollow",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Shivam Singh\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{USER_BASE_URL}}/unfollow/:userId",
+							"host": [
+								"{{USER_BASE_URL}}"
+							],
+							"path": [
+								"unfollow",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "6661c8ca21750d4a4ad6b22e"
+								}
+							]
+						},
+						"description": "\n### Update Unfollow Status\nThis endpoint is used to unfollow a user by their ID.\n\n#### Request\n- Method: PUT\n- URL: `{{USER_BASE_URL}}/unfollow/:userId`\n- Body:\n  - name (string, optional): The name of the user to unfollow.\n\n#### Response\nThe response is in JSON format with the following schema:\n```json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"status\": {\n      \"type\": \"boolean\"\n    },\n    \"data\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"message\": {\n          \"type\": \"string\"\n        }\n      }\n    }\n  }\n}\n```\n- Status: 200 OK\n- Content-Type: application/json\n- status (boolean): Indicates the success status of the unfollow operation.\n- data.message (string): A message confirming the unfollow action.\n"
+					},
+					"response": [
+						{
+							"name": "users/unfollow",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Shivam Singh\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{USER_BASE_URL}}/unfollow/:userId",
+									"host": [
+										"{{USER_BASE_URL}}"
+									],
+									"path": [
+										"unfollow",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "6661c8ca21750d4a4ad6b22e"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "69"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"45-n9qyRuYNQrBwABeHOV1VLbaOoGo\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 14:53:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": {\n        \"message\": \"Successfully unfollowed the user\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "users/all-users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{USER_BASE_URL}}/?page=1&limit=10&sortBy=createdAt&sortOrder=DESC",
+							"host": [
+								"{{USER_BASE_URL}}"
+							],
+							"path": [
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "sortBy",
+									"value": "createdAt"
+								},
+								{
+									"key": "sortOrder",
+									"value": "DESC"
+								},
+								{
+									"key": "search",
+									"value": "Mohan",
+									"disabled": true
+								}
+							]
+						},
+						"description": "### GET Request Description\n\nThis endpoint retrieves a list of data with the following query parameters:\n\n- `page` (number) - Specifies the page number\n    \n- `limit` (number) - Specifies the number of items per page\n    \n- `sortBy` (string) - Specifies the field to sort by\n    \n- `sortOrder` (string) - Specifies the sort order (e.g., ASC or DESC)\n    \n\n### Request Body\n\nThis request does not contain a request body.\n\n### Response Body\n\nThe response is in JSON format and has the following schema:\n\n``` json\n{\n    \"status\": \"boolean\",\n    \"data\": {\n        \"data\": [\n            {\n                \"_id\": \"string\",\n                \"name\": \"string\",\n                \"phone\": \"string\",\n                \"email\": \"string\",\n                \"followers\": [\"string\"],\n                \"following\": [\"string\"],\n                \"createdAt\": \"string\",\n                \"updatedAt\": \"string\"\n            }\n        ],\n        \"count\": \"number\"\n    }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "users/all-users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{USER_BASE_URL}}/?page=1&limit=10&sortBy=createdAt&sortOrder=DESC",
+									"host": [
+										"{{USER_BASE_URL}}"
+									],
+									"path": [
+										""
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "sortBy",
+											"value": "createdAt"
+										},
+										{
+											"key": "sortOrder",
+											"value": "DESC"
+										},
+										{
+											"key": "search",
+											"value": "Mohan",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.0"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 17:46:04 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "519"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"207-AjYt702oKhnoofkOJPYqmrlRViI\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": {\n        \"data\": [\n            {\n                \"_id\": \"6661c8ca21750d4a4ad6b22e\",\n                \"name\": \"Mohan Singh\",\n                \"phone\": \"6306518467\",\n                \"email\": \"mohan@gmail.com\",\n                \"followers\": [\n                    \"6661c82a21750d4a4ad6b227\"\n                ],\n                \"following\": [],\n                \"createdAt\": \"2024-06-06T14:33:46.902Z\",\n                \"updatedAt\": \"2024-06-06T14:53:11.152Z\"\n            },\n            {\n                \"_id\": \"6661c82a21750d4a4ad6b227\",\n                \"name\": \"Shivam Singh\",\n                \"phone\": \"6306518466\",\n                \"email\": \"shivam@gmail.com\",\n                \"followers\": [],\n                \"following\": [\n                    \"6661c8ca21750d4a4ad6b22e\"\n                ],\n                \"createdAt\": \"2024-06-06T14:31:06.920Z\",\n                \"updatedAt\": \"2024-06-06T14:53:11.074Z\"\n            }\n        ],\n        \"count\": 2\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "users/profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{USER_BASE_URL}}/profile",
+							"host": [
+								"{{USER_BASE_URL}}"
+							],
+							"path": [
+								"profile"
+							]
+						},
+						"description": "### Profile GET Request\n\nThis endpoint retrieves the profile information.\n\n#### Request Body\n\nThis request does not require a request body.\n\n#### Response Body\n\nThe response will be in JSON format with the following schema:\n\n``` json\n{\n    \"status\": \"boolean\",\n    \"data\": {\n        \"_id\": \"string\",\n        \"name\": \"string\",\n        \"phone\": \"string\",\n        \"email\": \"string\",\n        \"followers\": \"array\",\n        \"following\": \"array\",\n        \"createdAt\": \"string\",\n        \"updatedAt\": \"string\"\n    }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "profile",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{USER_BASE_URL}}/profile",
+									"host": [
+										"{{USER_BASE_URL}}"
+									],
+									"path": [
+										"profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.0"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 17:46:08 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "264"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"108-ZeMJNBrYyejzdfM9pXUap4Lx60I\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": {\n        \"_id\": \"6661c82a21750d4a4ad6b227\",\n        \"name\": \"Shivam Singh\",\n        \"phone\": \"+916306518466\",\n        \"email\": \"shivam@gmail.com\",\n        \"followers\": [],\n        \"following\": [\n            \"6661c8ca21750d4a4ad6b22e\"\n        ],\n        \"createdAt\": \"2024-06-06T14:31:06.920Z\",\n        \"updatedAt\": \"2024-06-06T14:53:11.074Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "users/",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{USER_BASE_URL}}/",
+							"host": [
+								"{{USER_BASE_URL}}"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "### DELETE Request to {{USER_BASE_URL}}/\n\nThis endpoint sends a DELETE request to the base URL.\n\n#### Request Body\n\nThis request does not contain a request body.\n\n#### Response\n\nThe response is in JSON format with the following schema:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"status\": {\n            \"type\": \"boolean\"\n        },\n        \"data\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"message\": {\n                    \"type\": \"string\"\n                }\n            }\n        }\n    }\n}\n\n ```\n\nThe response contains a \"status\" boolean field and a \"data\" object with a \"message\" string field."
+					},
+					"response": [
+						{
+							"name": "delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{USER_BASE_URL}}/",
+									"host": [
+										"{{USER_BASE_URL}}"
+									],
+									"path": [
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "62"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3e-vuQhm7h4zH1/AqseE9+/EYZ8wMg\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 14:30:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": {\n        \"message\": \"User deleted successfully\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "DISCUSSIONS",
+			"item": [
+				{
+					"name": "discussions/create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\": \"Hi I am Shivam\",\r\n    \"image\": \"https://lh3.googleusercontent.com/a/AEdFTp5idPaTgOVSfItuWHGxw9oCl5KImV9Um7oPUvU3874=s96-c\",\r\n    \"hashtags\": [\"ART\", \"FUN\", \"dfth\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DISCUSSIONS_BASE_URL}}/",
+							"host": [
+								"{{DISCUSSIONS_BASE_URL}}"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "### POST Request to Discussions Base URL\n\nThis endpoint allows the user to create a new discussion with text, image, and hashtags.\n\n#### Request Body\n\n- `text` (string, optional): The text content of the discussion.\n    \n- `image` (string, optional): The URL of the image attached to the discussion.\n    \n- `hashtags` (array of strings, optional): An array of hashtags associated with the discussion.\n    \n\n#### Response\n\nThe response is in JSON format and follows the schema below:\n\n``` json\n{\n    \"status\": true,\n    \"data\": {\n        \"userId\": \"\",\n        \"text\": \"\",\n        \"image\": \"\",\n        \"hashtags\": [\"\"],\n        \"viewCount\": 0,\n        \"likes\": [],\n        \"_id\": \"\",\n        \"createdOn\": \"\",\n        \"createdAt\": \"\",\n        \"updatedAt\": \"\"\n    }\n}\n\n ```\n\nThe response includes a boolean `status` indicating the success of the request, and the `data` object containing the details of the newly created discussion, including `userId`, `text`, `image`, `hashtags`, `viewCount`, `likes`, `_id`, `createdOn`, `createdAt`, and `updatedAt`."
+					},
+					"response": [
+						{
+							"name": "create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"text\": \"Hi I am Shivam\",\r\n    \"image\": \"https://lh3.googleusercontent.com/a/AEdFTp5idPaTgOVSfItuWHGxw9oCl5KImV9Um7oPUvU3874=s96-c\",\r\n    \"hashtags\": [\"ART\", \"FUN\", \"dfth\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{DISCUSSIONS_BASE_URL}}/",
+									"host": [
+										"{{DISCUSSIONS_BASE_URL}}"
+									],
+									"path": [
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.0"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 17:46:57 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "391"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"187-t593Z4R3KAt35IY5jqTrHdVuNpc\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": {\n        \"userId\": \"6661c82a21750d4a4ad6b227\",\n        \"text\": \"Hi I am Shivam\",\n        \"image\": \"https://lh3.googleusercontent.com/a/AEdFTp5idPaTgOVSfItuWHGxw9oCl5KImV9Um7oPUvU3874=s96-c\",\n        \"hashtags\": [\n            \"ART\",\n            \"FUN\",\n            \"dfth\"\n        ],\n        \"viewCount\": 0,\n        \"likes\": [],\n        \"_id\": \"6661f6116deed16780cc85ff\",\n        \"createdOn\": \"2024-06-06T17:46:57.088Z\",\n        \"createdAt\": \"2024-06-06T17:46:57.113Z\",\n        \"updatedAt\": \"2024-06-06T17:46:57.113Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "discussions/update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\": \"Hi I am Shivam\",\r\n    \"image\": \"https://lh3.googleusercontent.com/a/AEdFTp5idPaTgOVSfItuWHGxw9oCl5KImV9Um7oPUvU3874=s96-c\",\r\n    \"hashtags\": [\"FUN\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DISCUSSIONS_BASE_URL}}/:discussionId",
+							"host": [
+								"{{DISCUSSIONS_BASE_URL}}"
+							],
+							"path": [
+								":discussionId"
+							],
+							"variable": [
+								{
+									"key": "discussionId",
+									"value": "6661d9613063aca149d31f89"
+								}
+							]
+						},
+						"description": "### Update Discussion\n\nThis endpoint allows the user to update a specific discussion by providing the discussion ID and the updated content.\n\n#### Request\n\n- Method: PUT\n    \n- URL: {{DISCUSSIONS_BASE_URL}}/:discussionId\n    \n\n##### Request Body\n\n- text (string, optional): The updated text content of the discussion.\n    \n- image (string, optional): The updated image URL for the discussion.\n    \n- hashtags (array of strings, optional): The updated list of hashtags associated with the discussion.\n    \n\n#### Response\n\nThe response is in JSON format with the following schema:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"status\": {\n            \"type\": \"boolean\"\n        },\n        \"data\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"_id\": {\n                    \"type\": \"string\"\n                },\n                \"userId\": {\n                    \"type\": \"string\"\n                },\n                \"text\": {\n                    \"type\": \"string\"\n                },\n                \"image\": {\n                    \"type\": \"string\"\n                },\n                \"hashtags\": {\n                    \"type\": \"array\",\n                    \"items\": {\n                        \"type\": \"string\"\n                    }\n                },\n                \"viewCount\": {\n                    \"type\": \"integer\"\n                },\n                \"likes\": {\n                    \"type\": \"array\"\n                },\n                \"createdOn\": {\n                    \"type\": \"string\"\n                },\n                \"createdAt\": {\n                    \"type\": \"string\"\n                },\n                \"updatedAt\": {\n                    \"type\": \"string\"\n                }\n            }\n        }\n    }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "discussions/update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"text\": \"Hi I am Shivam\",\r\n    \"image\": \"https://lh3.googleusercontent.com/a/AEdFTp5idPaTgOVSfItuWHGxw9oCl5KImV9Um7oPUvU3874=s96-c\",\r\n    \"hashtags\": [\"FUN\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{DISCUSSIONS_BASE_URL}}/:discussionId",
+									"host": [
+										"{{DISCUSSIONS_BASE_URL}}"
+									],
+									"path": [
+										":discussionId"
+									],
+									"variable": [
+										{
+											"key": "discussionId",
+											"value": "6661d9613063aca149d31f89"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "378"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"17a-f3rNW22wLlKWK1BsAsJ/y/4HdRM\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 15:55:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": {\n        \"_id\": \"6661d9613063aca149d31f89\",\n        \"userId\": \"6661c82a21750d4a4ad6b227\",\n        \"text\": \"Hi I am Shivam\",\n        \"image\": \"https://lh3.googleusercontent.com/a/AEdFTp5idPaTgOVSfItuWHGxw9oCl5KImV9Um7oPUvU3874=s96-c\",\n        \"hashtags\": [\n            \"FUN\"\n        ],\n        \"viewCount\": 0,\n        \"likes\": [],\n        \"createdOn\": \"2024-06-06T15:44:33.709Z\",\n        \"createdAt\": \"2024-06-06T15:44:33.718Z\",\n        \"updatedAt\": \"2024-06-06T15:55:28.422Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "discussions/all-discussions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DISCUSSIONS_BASE_URL}}/?page=1&limit=10&sortBy=viewCount&sortOrder=DESC",
+							"host": [
+								"{{DISCUSSIONS_BASE_URL}}"
+							],
+							"path": [
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "sortBy",
+									"value": "viewCount"
+								},
+								{
+									"key": "sortOrder",
+									"value": "DESC"
+								},
+								{
+									"key": "search",
+									"value": "KAML",
+									"disabled": true
+								}
+							]
+						},
+						"description": "### Get Discussions\n\nThis endpoint retrieves a list of discussions based on the specified criteria.\n\n#### Request\n\n- Method: GET\n    \n- URL: `{{DISCUSSIONS_BASE_URL}}/?page=1&limit=10&sortBy=viewCount&sortOrder=DESC`\n    \n- Query Parameters:\n    - page (number): The page number for paginated results.\n        \n    - limit (number): The maximum number of discussions to be returned.\n        \n    - sortBy (string): The field by which the discussions are sorted.\n        \n    - sortOrder (string): The order in which the discussions are sorted (ASC or DESC).\n        \n\n#### Response\n\nThe response is in JSON format and follows the schema below:\n\n``` json\n{\n  \"status\": \"boolean\",\n  \"data\": {\n    \"data\": [\n      {\n        \"_id\": \"string\",\n        \"text\": \"string\",\n        \"image\": \"string\",\n        \"hashtags\": [\"string\"],\n        \"viewCount\": \"number\",\n        \"likes\": [\"string\"],\n        \"createdOn\": \"string\",\n        \"createdAt\": \"string\",\n        \"updatedAt\": \"string\"\n      }\n    ],\n    \"count\": \"number\"\n  }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "discussions/all-discussions",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{DISCUSSIONS_BASE_URL}}/?page=1&limit=10&sortBy=viewCount&sortOrder=DESC",
+									"host": [
+										"{{DISCUSSIONS_BASE_URL}}"
+									],
+									"path": [
+										""
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "sortBy",
+											"value": "viewCount"
+										},
+										{
+											"key": "sortOrder",
+											"value": "DESC"
+										},
+										{
+											"key": "search",
+											"value": "KAML",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.0"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 17:49:26 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2326"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"916-x9GelwnsjqLZNeqK5CegZDjK90o\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": {\n        \"data\": [\n            {\n                \"_id\": \"6661ec8307977552b3d95628\",\n                \"text\": \"Hi I am Shivam\",\n                \"image\": \"https://lh3.googleusercontent.com/a/AEdFTp5idPaTgOVSfItuWHGxw9oCl5KImV9Um7oPUvU3874=s96-c\",\n                \"hashtags\": [\n                    \"FUN\"\n                ],\n                \"viewCount\": 5,\n                \"likes\": [],\n                \"createdOn\": \"2024-06-06T17:06:11.580Z\",\n                \"createdAt\": \"2024-06-06T17:06:11.589Z\",\n                \"updatedAt\": \"2024-06-06T17:07:28.360Z\"\n            },\n            {\n                \"_id\": \"6661f035ab10e7abef1f9e6e\",\n                \"text\": \"Hello\",\n                \"image\": \"https://lh3.googleusercontent.com/a/AEdFTp5idPaTgOVSfItuWHGxw9oCl5KImV9Um7oPUvU3874=s96-c\",\n                \"hashtags\": [\n                    \"HELLO\"\n                ],\n                \"viewCount\": 4,\n                \"likes\": [],\n                \"createdOn\": \"2024-06-06T17:21:57.457Z\",\n                \"createdAt\": \"2024-06-06T17:21:57.458Z\",\n                \"updatedAt\": \"2024-06-06T17:46:41.519Z\"\n            },\n            {\n                \"_id\": \"6661eb1d524f7c8d1dade692\",\n                \"text\": \"Hi I am Shivam\",\n                \"image\": \"https://lh3.googleusercontent.com/a/AEdFTp5idPaTgOVSfItuWHGxw9oCl5KImV9Um7oPUvU3874=s96-c\",\n                \"hashtags\": [\n                    \"FUN\"\n                ],\n                \"viewCount\": 0,\n                \"likes\": [\n                    \"6661c82a21750d4a4ad6b227\"\n                ],\n                \"createdOn\": \"2024-06-06T17:00:13.371Z\",\n                \"createdAt\": \"2024-06-06T17:00:13.380Z\",\n                \"updatedAt\": \"2024-06-06T17:20:11.269Z\"\n            },\n            {\n                \"_id\": \"6661f02bab10e7abef1f9e6c\",\n                \"text\": \"Hi\",\n                \"image\": \"https://lh3.googleusercontent.com/a/AEdFTp5idPaTgOVSfItuWHGxw9oCl5KImV9Um7oPUvU3874=s96-c\",\n                \"hashtags\": [\n                    \"FUN\"\n                ],\n                \"viewCount\": 0,\n                \"likes\": [],\n                \"createdOn\": \"2024-06-06T17:21:47.745Z\",\n                \"createdAt\": \"2024-06-06T17:21:47.751Z\",\n                \"updatedAt\": \"2024-06-06T17:21:47.751Z\"\n            },\n            {\n                \"_id\": \"6661f03eab10e7abef1f9e70\",\n                \"text\": \"KAML\",\n                \"image\": \"https://lh3.googleusercontent.com/a/AEdFTp5idPaTgOVSfItuWHGxw9oCl5KImV9Um7oPUvU3874=s96-c\",\n                \"hashtags\": [\n                    \"KAML\"\n                ],\n                \"viewCount\": 0,\n                \"likes\": [],\n                \"createdOn\": \"2024-06-06T17:22:06.465Z\",\n                \"createdAt\": \"2024-06-06T17:22:06.466Z\",\n                \"updatedAt\": \"2024-06-06T17:22:06.466Z\"\n            },\n            {\n                \"_id\": \"6661f048ab10e7abef1f9e72\",\n                \"text\": \"Hi I am Shivam\",\n                \"image\": \"https://lh3.googleusercontent.com/a/AEdFTp5idPaTgOVSfItuWHGxw9oCl5KImV9Um7oPUvU3874=s96-c\",\n                \"hashtags\": [\n                    \"ART\",\n                    \"FUN\"\n                ],\n                \"viewCount\": 0,\n                \"likes\": [],\n                \"createdOn\": \"2024-06-06T17:22:16.965Z\",\n                \"createdAt\": \"2024-06-06T17:22:16.966Z\",\n                \"updatedAt\": \"2024-06-06T17:22:16.966Z\"\n            },\n            {\n                \"_id\": \"6661f6116deed16780cc85ff\",\n                \"text\": \"Hi I am Shivam\",\n                \"image\": \"https://lh3.googleusercontent.com/a/AEdFTp5idPaTgOVSfItuWHGxw9oCl5KImV9Um7oPUvU3874=s96-c\",\n                \"hashtags\": [\n                    \"ART\",\n                    \"FUN\",\n                    \"dfth\"\n                ],\n                \"viewCount\": 0,\n                \"likes\": [\n                    \"6661c82a21750d4a4ad6b227\"\n                ],\n                \"createdOn\": \"2024-06-06T17:46:57.088Z\",\n                \"createdAt\": \"2024-06-06T17:46:57.113Z\",\n                \"updatedAt\": \"2024-06-06T17:49:22.069Z\"\n            }\n        ],\n        \"count\": 7\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "discussions/one-discussion",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DISCUSSIONS_BASE_URL}}/:discussionId",
+							"host": [
+								"{{DISCUSSIONS_BASE_URL}}"
+							],
+							"path": [
+								":discussionId"
+							],
+							"variable": [
+								{
+									"key": "discussionId",
+									"value": "6661f035ab10e7abef1f9e6e"
+								}
+							]
+						},
+						"description": "\n### GET Discussion by ID\n\nThis endpoint retrieves a specific discussion by its ID.\n\n#### Request\n\n- Method: `GET`\n- URL: `{{DISCUSSIONS_BASE_URL}}/:discussionId`\n\n#### Response\n\nThe response is in JSON format and follows the schema below:\n\n```json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"status\": {\n            \"type\": \"boolean\"\n        },\n        \"data\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"_id\": {\n                    \"type\": \"string\"\n                },\n                \"userId\": {\n                    \"type\": \"string\"\n                },\n                \"text\": {\n                    \"type\": \"string\"\n                },\n                \"image\": {\n                    \"type\": \"string\"\n                },\n                \"hashtags\": {\n                    \"type\": \"array\",\n                    \"items\": {\n                        \"type\": \"string\"\n                    }\n                },\n                \"viewCount\": {\n                    \"type\": \"integer\"\n                },\n                \"likes\": {\n                    \"type\": \"array\"\n                },\n                \"createdOn\": {\n                    \"type\": \"string\"\n                },\n                \"createdAt\": {\n                    \"type\": \"string\"\n                },\n                \"updatedAt\": {\n                    \"type\": \"string\"\n                }\n            }\n        }\n    }\n}\n"
+					},
+					"response": [
+						{
+							"name": "discussions/one-discussion",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{DISCUSSIONS_BASE_URL}}/:discussionId",
+									"host": [
+										"{{DISCUSSIONS_BASE_URL}}"
+									],
+									"path": [
+										":discussionId"
+									],
+									"variable": [
+										{
+											"key": "discussionId",
+											"value": "6661f035ab10e7abef1f9e6e"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.0"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 17:46:41 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "371"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"173-I6I1baWGoJHyj0FO0qOfsD4w8VU\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": {\n        \"_id\": \"6661f035ab10e7abef1f9e6e\",\n        \"userId\": \"6661c82a21750d4a4ad6b227\",\n        \"text\": \"Hello\",\n        \"image\": \"https://lh3.googleusercontent.com/a/AEdFTp5idPaTgOVSfItuWHGxw9oCl5KImV9Um7oPUvU3874=s96-c\",\n        \"hashtags\": [\n            \"HELLO\"\n        ],\n        \"viewCount\": 4,\n        \"likes\": [],\n        \"createdOn\": \"2024-06-06T17:21:57.457Z\",\n        \"createdAt\": \"2024-06-06T17:21:57.458Z\",\n        \"updatedAt\": \"2024-06-06T17:46:41.519Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "discussions/tags",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DISCUSSIONS_BASE_URL}}/tags?tags=FUN",
+							"host": [
+								"{{DISCUSSIONS_BASE_URL}}"
+							],
+							"path": [
+								"tags"
+							],
+							"query": [
+								{
+									"key": "tags",
+									"value": "FUN"
+								}
+							]
+						},
+						"description": "### GET /tags\n\nThis endpoint retrieves discussions based on the specified tag.\n\n#### Request\n\nNo request body parameters are required. The query parameter \"tags\" should be provided to specify the tag for which discussions are requested.\n\n- `tags` (string, required): The tag for which discussions are requested.\n    \n\n#### Response\n\nThe response is a JSON object with the following schema:\n\n``` json\n{\n    \"status\": boolean,\n    \"data\": [\n        {\n            \"_id\": string,\n            \"userId\": string,\n            \"text\": string,\n            \"image\": string,\n            \"hashtags\": [string],\n            \"viewCount\": integer,\n            \"likes\": [string],\n            \"createdOn\": string,\n            \"createdAt\": string,\n            \"updatedAt\": string\n        }\n    ]\n}\n\n ```\n\n- `status` (boolean): Indicates the status of the response.\n    \n- `data` (array): An array of discussion objects containing the following fields:\n    - `_id` (string): The unique identifier of the discussion.\n        \n    - `userId` (string): The user ID associated with the discussion.\n        \n    - `text` (string): The text content of the discussion.\n        \n    - `image` (string): The URL of the image associated with the discussion.\n        \n    - `hashtags` (array of strings): An array of hashtags associated with the discussion.\n        \n    - `viewCount` (integer): The count of views for the discussion.\n        \n    - `likes` (array of strings): An array of user IDs who have liked the discussion.\n        \n    - `createdOn` (string): The date of creation of the discussion.\n        \n    - `createdAt` (string): The timestamp of the creation of the discussion.\n        \n    - `updatedAt` (string): The timestamp of the last update to the discussion."
+					},
+					"response": [
+						{
+							"name": "discussions/tags",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{DISCUSSIONS_BASE_URL}}/tags?tags=FUN",
+									"host": [
+										"{{DISCUSSIONS_BASE_URL}}"
+									],
+									"path": [
+										"tags"
+									],
+									"query": [
+										{
+											"key": "tags",
+											"value": "FUN"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "386"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"182-vYg1+B/KF6sFE71KQUiv4yGI260\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 15:52:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": [\n        {\n            \"_id\": \"6661d93f4477d1e5e54cacce\",\n            \"userId\": \"6661c82a21750d4a4ad6b227\",\n            \"text\": \"Hi I am Shivam\",\n            \"image\": \"https://lh3.googleusercontent.com/a/AEdFTp5idPaTgOVSfItuWHGxw9oCl5KImV9Um7oPUvU3874=s96-c\",\n            \"hashtags\": [\n                \"ART\",\n                \"FUN\"\n            ],\n            \"viewCount\": 0,\n            \"likes\": [],\n            \"createdOn\": \"2024-06-06T15:43:59.233Z\",\n            \"createdAt\": \"2024-06-06T15:43:59.246Z\",\n            \"updatedAt\": \"2024-06-06T15:43:59.246Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "discussions/delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DISCUSSIONS_BASE_URL}}/:discussionId",
+							"host": [
+								"{{DISCUSSIONS_BASE_URL}}"
+							],
+							"path": [
+								":discussionId"
+							],
+							"variable": [
+								{
+									"key": "discussionId",
+									"value": "6661f6116deed16780cc85ff"
+								}
+							]
+						},
+						"description": "### DELETE Discussion\n\nThis endpoint is used to delete a specific discussion identified by the discussion ID.\n\n#### Request\n\n- Method: DELETE\n    \n- URL: `{{DISCUSSIONS_BASE_URL}}/:discussionId`\n    \n\n#### Response\n\nThe response is in JSON format and has the following schema:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"status\": {\n            \"type\": \"boolean\"\n        },\n        \"data\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"message\": {\n                    \"type\": \"string\"\n                }\n            }\n        }\n    }\n}\n\n ```\n\nThe response body includes:\n\n- `status` (boolean): Indicates the status of the operation.\n    \n- `data.message` (string): An optional message related to the operation."
+					},
+					"response": [
+						{
+							"name": "discussions/delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{DISCUSSIONS_BASE_URL}}/:discussionId",
+									"host": [
+										"{{DISCUSSIONS_BASE_URL}}"
+									],
+									"path": [
+										":discussionId"
+									],
+									"variable": [
+										{
+											"key": "discussionId",
+											"value": "6661f6116deed16780cc85ff"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.0"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 17:51:02 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "68"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"44-cL0U5ZJ+yNs2zN7Wamfe+/bHG/A\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": {\n        \"message\": \"Discussion deleted successfully\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "INTERACTION",
+			"item": [
+				{
+					"name": "interaction/comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"discussionId\": \"6661f6116deed16780cc85ff\",\r\n    \"text\": \"Good\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{INTERACTION_BASE_URL}}/comment",
+							"host": [
+								"{{INTERACTION_BASE_URL}}"
+							],
+							"path": [
+								"comment"
+							]
+						},
+						"description": "### /comment\n\nThis endpoint allows the user to post a comment in a discussion.\n\n#### Request Body\n\n- `discussionId` (string, required): The ID of the discussion where the comment is being posted.\n    \n- `text` (string, required): The content of the comment.\n    \n\n#### Response\n\nThe response is a JSON object with the following properties:\n\n- `status` (boolean): Indicates the status of the request.\n    \n- `data` (object): Contains the details of the posted comment, including discussion ID, user ID, comment text, likes, ID, replies, creation timestamp, and last update timestamp.\n    \n\n#### JSON Schema\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"status\": {\n      \"type\": \"boolean\"\n    },\n    \"data\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"discussionId\": {\n          \"type\": \"string\"\n        },\n        \"userId\": {\n          \"type\": \"string\"\n        },\n        \"text\": {\n          \"type\": \"string\"\n        },\n        \"likes\": {\n          \"type\": \"array\"\n        },\n        \"_id\": {\n          \"type\": \"string\"\n        },\n        \"replies\": {\n          \"type\": \"array\"\n        },\n        \"createdAt\": {\n          \"type\": \"string\"\n        },\n        \"updatedAt\": {\n          \"type\": \"string\"\n        }\n      }\n    }\n  }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "interaction/comment",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"discussionId\": \"6661f6116deed16780cc85ff\",\r\n    \"text\": \"Good\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{INTERACTION_BASE_URL}}/comment",
+									"host": [
+										"{{INTERACTION_BASE_URL}}"
+									],
+									"path": [
+										"comment"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.0"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 17:49:05 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "251"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"fb-+INP5pAsOFgvulruqCJhc0l82DE\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": {\n        \"discussionId\": \"6661f6116deed16780cc85ff\",\n        \"userId\": \"6661c82a21750d4a4ad6b227\",\n        \"text\": \"Good\",\n        \"likes\": [],\n        \"_id\": \"6661f6918cad9d1ec5d108d8\",\n        \"replies\": [],\n        \"createdAt\": \"2024-06-06T17:49:05.195Z\",\n        \"updatedAt\": \"2024-06-06T17:49:05.195Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "interaction/comment/update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\": \"Nice\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{INTERACTION_BASE_URL}}/comment/:commentId",
+							"host": [
+								"{{INTERACTION_BASE_URL}}"
+							],
+							"path": [
+								"comment",
+								":commentId"
+							],
+							"variable": [
+								{
+									"key": "commentId",
+									"value": "6661e8afb5b5714ee13c4def"
+								}
+							]
+						},
+						"description": "### Update Comment\n\nThis endpoint is used to update a specific comment by its ID.\n\n#### Request\n\n- Method: PUT\n    \n- URL: `{{INTERACTION_BASE_URL}}/comment/:commentId`\n    \n- Body:\n    - text (string, required): The updated text for the comment.\n        \n\n#### Response\n\nThe response is in JSON format with the following schema:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"status\": {\n      \"type\": \"boolean\"\n    },\n    \"data\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"_id\": {\n          \"type\": \"string\"\n        },\n        \"discussionId\": {\n          \"type\": \"string\"\n        },\n        \"userId\": {\n          \"type\": \"string\"\n        },\n        \"text\": {\n          \"type\": \"string\"\n        },\n        \"likes\": {\n          \"type\": \"array\"\n        },\n        \"replies\": {\n          \"type\": \"array\"\n        },\n        \"createdAt\": {\n          \"type\": \"string\"\n        },\n        \"updatedAt\": {\n          \"type\": \"string\"\n        }\n      }\n    }\n  }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "interaction/comment/update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"text\": \"Nice\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{INTERACTION_BASE_URL}}/comment/:commentId",
+									"host": [
+										"{{INTERACTION_BASE_URL}}"
+									],
+									"path": [
+										"comment",
+										":commentId"
+									],
+									"variable": [
+										{
+											"key": "commentId",
+											"value": "6661e8afb5b5714ee13c4def"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "251"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"fb-hCWUThp9HTxtRk7y4cUPL+mW8XI\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 16:51:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": {\n        \"_id\": \"6661e8afb5b5714ee13c4def\",\n        \"discussionId\": \"6661d93f4477d1e5e54cacce\",\n        \"userId\": \"6661c82a21750d4a4ad6b227\",\n        \"text\": \"Nice\",\n        \"likes\": [],\n        \"replies\": [],\n        \"createdAt\": \"2024-06-06T16:49:51.198Z\",\n        \"updatedAt\": \"2024-06-06T16:51:59.705Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "interaction/comment/reply",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\": \"Good\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{INTERACTION_BASE_URL}}/comment/reply/:commentId",
+							"host": [
+								"{{INTERACTION_BASE_URL}}"
+							],
+							"path": [
+								"comment",
+								"reply",
+								":commentId"
+							],
+							"variable": [
+								{
+									"key": "commentId",
+									"value": "6661e8afb5b5714ee13c4def"
+								}
+							]
+						},
+						"description": "### PUT /comment/reply/:commentId\n\nThis endpoint is used to update a reply to a comment.\n\n#### Request\n\n- Method: PUT\n    \n- URL: `{{INTERACTION_BASE_URL}}/comment/reply/:commentId`\n    \n- Body:\n    \n    ``` json\n    {\n      \"text\": \"\"\n    }\n    \n     ```\n    \n    - `text` (string, required): The updated text for the reply.\n        \n\n#### Response\n\n- Status: 200\n    \n- Content-Type: application/json\n    \n- Body:\n    \n    ``` json\n    {\n      \"status\": true,\n      \"data\": {\n        \"_id\": \"\",\n        \"discussionId\": \"\",\n        \"userId\": \"\",\n        \"text\": \"\",\n        \"likes\": [],\n        \"replies\": [\n          {\n            \"userId\": \"\",\n            \"text\": \"\",\n            \"likes\": [],\n            \"_id\": \"\",\n            \"createdAt\": \"\"\n          }\n        ],\n        \"createdAt\": \"\",\n        \"updatedAt\": \"\"\n      }\n    }\n    \n     ```\n    \n\n#### Response Schema\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"status\": {\n      \"type\": \"boolean\"\n    },\n    \"data\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"_id\": {\n          \"type\": \"string\"\n        },\n        \"discussionId\": {\n          \"type\": \"string\"\n        },\n        \"userId\": {\n          \"type\": \"string\"\n        },\n        \"text\": {\n          \"type\": \"string\"\n        },\n        \"likes\": {\n          \"type\": \"array\",\n          \"items\": {}\n        },\n        \"replies\": {\n          \"type\": \"array\",\n          \"items\": {\n            \"type\": \"object\",\n            \"properties\": {\n              \"userId\": {\n                \"type\": \"string\"\n              },\n              \"text\": {\n                \"type\": \"string\"\n              },\n              \"likes\": {\n                \"type\": \"array\",\n                \"items\": {}\n              },\n              \"_id\": {\n                \"type\": \"string\"\n              },\n              \"createdAt\": {\n                \"type\": \"string\"\n              }\n            }\n          }\n        },\n        \"createdAt\": {\n          \"type\": \"string\"\n        },\n        \"updatedAt\": {\n          \"type\": \"string\"\n        }\n      }\n    }\n  }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "interaction/comment/reply",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"text\": \"Good\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{INTERACTION_BASE_URL}}/comment/reply/:commentId",
+									"host": [
+										"{{INTERACTION_BASE_URL}}"
+									],
+									"path": [
+										"comment",
+										"reply",
+										":commentId"
+									],
+									"variable": [
+										{
+											"key": "commentId",
+											"value": "6661e8afb5b5714ee13c4def"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "385"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"181-ilT88jnlKNQtoIlWahyCtRRumdE\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 16:54:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": {\n        \"_id\": \"6661e8afb5b5714ee13c4def\",\n        \"discussionId\": \"6661d93f4477d1e5e54cacce\",\n        \"userId\": \"6661c82a21750d4a4ad6b227\",\n        \"text\": \"Nice\",\n        \"likes\": [],\n        \"replies\": [\n            {\n                \"userId\": \"6661c82a21750d4a4ad6b227\",\n                \"text\": \"Good\",\n                \"likes\": [],\n                \"_id\": \"6661e9be0e724711c1d321cb\",\n                \"createdAt\": \"2024-06-06T16:54:22.603Z\"\n            }\n        ],\n        \"createdAt\": \"2024-06-06T16:49:51.198Z\",\n        \"updatedAt\": \"2024-06-06T16:54:22.585Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "interaction/comment/like",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{INTERACTION_BASE_URL}}/comment/like/:commentId",
+							"host": [
+								"{{INTERACTION_BASE_URL}}"
+							],
+							"path": [
+								"comment",
+								"like",
+								":commentId"
+							],
+							"variable": [
+								{
+									"key": "commentId",
+									"value": "6661e8afb5b5714ee13c4def"
+								}
+							]
+						},
+						"description": "### Request Description\n\nThis endpoint allows the user to like a specific comment by sending an HTTP PUT request to the provided URL with the commentId parameter in the path.\n\n### Request Body\n\nThis request does not require a request body.\n\n### Response\n\nThe response will be in JSON format with a status code of 200. The response schema is as follows:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"status\": {\n            \"type\": \"boolean\"\n        },\n        \"data\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"_id\": {\n                    \"type\": \"string\"\n                },\n                \"discussionId\": {\n                    \"type\": \"string\"\n                },\n                \"userId\": {\n                    \"type\": \"string\"\n                },\n                \"text\": {\n                    \"type\": \"string\"\n                },\n                \"likes\": {\n                    \"type\": \"array\",\n                    \"items\": {\n                        \"type\": \"string\"\n                    }\n                },\n                \"replies\": {\n                    \"type\": \"array\",\n                    \"items\": {\n                        \"type\": \"object\",\n                        \"properties\": {\n                            \"userId\": {\n                                \"type\": \"string\"\n                            },\n                            \"text\": {\n                                \"type\": \"string\"\n                            },\n                            \"likes\": {\n                                \"type\": \"array\"\n                            },\n                            \"_id\": {\n                                \"type\": \"string\"\n                            },\n                            \"createdAt\": {\n                                \"type\": \"string\"\n                            }\n                        }\n                    }\n                },\n                \"createdAt\": {\n                    \"type\": \"string\"\n                },\n                \"updatedAt\": {\n                    \"type\": \"string\"\n                }\n            }\n        }\n    }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "interaction/comment/like",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{INTERACTION_BASE_URL}}/comment/like/:commentId",
+									"host": [
+										"{{INTERACTION_BASE_URL}}"
+									],
+									"path": [
+										"comment",
+										"like",
+										":commentId"
+									],
+									"variable": [
+										{
+											"key": "commentId",
+											"value": "6661e8afb5b5714ee13c4def"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "411"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"19b-9Mtt3ABq3NKKBx7JYCIk1aTOHWo\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 16:55:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": {\n        \"_id\": \"6661e8afb5b5714ee13c4def\",\n        \"discussionId\": \"6661d93f4477d1e5e54cacce\",\n        \"userId\": \"6661c82a21750d4a4ad6b227\",\n        \"text\": \"Nice\",\n        \"likes\": [\n            \"6661c82a21750d4a4ad6b227\"\n        ],\n        \"replies\": [\n            {\n                \"userId\": \"6661c82a21750d4a4ad6b227\",\n                \"text\": \"Good\",\n                \"likes\": [],\n                \"_id\": \"6661e9be0e724711c1d321cb\",\n                \"createdAt\": \"2024-06-06T16:54:22.603Z\"\n            }\n        ],\n        \"createdAt\": \"2024-06-06T16:49:51.198Z\",\n        \"updatedAt\": \"2024-06-06T16:55:26.947Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "interaction/discussion/like",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{INTERACTION_BASE_URL}}/discussion/like/:discussionId",
+							"host": [
+								"{{INTERACTION_BASE_URL}}"
+							],
+							"path": [
+								"discussion",
+								"like",
+								":discussionId"
+							],
+							"variable": [
+								{
+									"key": "discussionId",
+									"value": "6661f6116deed16780cc85ff"
+								}
+							]
+						},
+						"description": "### Discussion Like\n\nThis endpoint allows the user to like a specific discussion by sending an HTTP PUT request to the specified URL.\n\n#### Request Body\n\n- No request body is required for this endpoint.\n    \n\n#### Response\n\nThe response will be in JSON format with the following schema:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"status\": {\n            \"type\": \"boolean\"\n        },\n        \"data\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"message\": {\n                    \"type\": \"string\"\n                }\n            }\n        }\n    }\n}\n\n ```\n\nThe response will include a status indicating the success of the operation, and an optional message in the data field."
+					},
+					"response": [
+						{
+							"name": "interaction/discussion/like",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{INTERACTION_BASE_URL}}/discussion/like/:discussionId",
+									"host": [
+										"{{INTERACTION_BASE_URL}}"
+									],
+									"path": [
+										"discussion",
+										"like",
+										":discussionId"
+									],
+									"variable": [
+										{
+											"key": "discussionId",
+											"value": "6661f6116deed16780cc85ff"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.0"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 17:49:21 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "66"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"42-e1MUcjzi6EnSy9qA/8Jha6F+blA\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": {\n        \"massage\": \"Discussion liked successfully\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "interaction/comment/delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{INTERACTION_BASE_URL}}/comment/:commentId",
+							"host": [
+								"{{INTERACTION_BASE_URL}}"
+							],
+							"path": [
+								"comment",
+								":commentId"
+							],
+							"variable": [
+								{
+									"key": "commentId",
+									"value": "6661e8afb5b5714ee13c4def"
+								}
+							]
+						},
+						"description": "\n### DELETE /comment/:commentId\n\nThis endpoint is used to delete a specific comment by its ID.\n\n#### Request\nNo request body is required for this request.\n\n- `:commentId` (path parameter) - The ID of the comment to be deleted.\n\n#### Response\nThe response is in JSON format and has the following schema:\n```json\n{\n    \"status\": \"boolean\",\n    \"data\": {\n        \"message\": \"string\"\n    }\n}\n```\n- `status` (boolean) - Indicates the status of the operation. `true` if successful, `false` otherwise.\n- `data.message` (string) - A message indicating the result of the operation. It may be empty if no specific message is provided.\n\n"
+					},
+					"response": [
+						{
+							"name": "interaction/comment/delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{INTERACTION_BASE_URL}}/comment/:commentId",
+									"host": [
+										"{{INTERACTION_BASE_URL}}"
+									],
+									"path": [
+										"comment",
+										":commentId"
+									],
+									"variable": [
+										{
+											"key": "commentId",
+											"value": "6661e8afb5b5714ee13c4def"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "65"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"41-jtbrkxovHnMQuYHReyXWlphkkis\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 06 Jun 2024 16:57:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": {\n        \"message\": \"Comment deleted successfully\"\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
